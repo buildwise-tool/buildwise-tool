@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import './App.css';
+import { makeStyles, Input, Label } from "@fluentui/react-components";
+import './App.css'
 
 interface Forecast {
     date: string;
@@ -8,8 +9,21 @@ interface Forecast {
     summary: string;
 }
 
+const useStyles = makeStyles({
+    root: {
+        // Stack the label above the field
+        display: "flex",
+        flexDirection: "column",
+        // Use 2px gap below the label (per the design system)
+        gap: "2px",
+        // Prevent the example from taking the full width of the page (optional)
+        maxWidth: "400px",
+    },
+});
+
 function App() {
     const [forecasts, setForecasts] = useState<Forecast[]>();
+    const styles = useStyles();
 
     useEffect(() => {
         populateWeatherData();
@@ -40,8 +54,14 @@ function App() {
 
     return (
         <div>
-            <h1 id="tableLabel">Weather forecast</h1>
-            <p>This component demonstrates fetching data from the server.</p>
+            <div className={styles.root}>
+                <Label htmlFor="xyz">Project</Label>
+                <Input id="xyz"/>
+                <Label htmlFor="xyz">Developer</Label>
+                <Input id="xyz"/>
+                <Label htmlFor="xyz">Address</Label>
+                <Input id="xyz"/>
+            </div>
             {contents}
         </div>
     );

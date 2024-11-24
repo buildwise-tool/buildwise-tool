@@ -1,0 +1,6 @@
+@BuildWise.Server_HostAddress = http://localhost:5056
+
+GET {{BuildWise.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

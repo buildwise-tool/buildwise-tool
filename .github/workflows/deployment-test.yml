@@ -39,14 +39,14 @@ jobs:
           cd src
           dotnet restore
           dotnet build --configuration Release
-          dotnet publish -c Release --property:PublishDir=$GITHUB_WORKSPACE/out/webapp
+          dotnet publish -c Release --property:PublishDir=${{ github.workspace }}/out/webapp
           
       # Deploy to Azure Web apps
       - name: 'Run Azure webapp deploy action using publish profile credentials'
         uses: azure/webapps-deploy@v3
         with: 
           app-name: ${{ env.AZURE_WEBAPP_NAME }} # Replace with your app name
-          package: '$GITHUB_WORKSPACE/out/webapp'
+          package: '${{ github.workspace }}/out/webapp'
       
       - name: logout
         run: |

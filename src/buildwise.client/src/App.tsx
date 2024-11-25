@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
+import { AuthenticatedTemplate, UnauthenticatedTemplate } from "@azure/msal-react";
 import { makeStyles, Input, Label } from "@fluentui/react-components";
 import './App.css'
+import { SignOutButton } from './components/SignOutButton';
+import { SignInButton } from './components/SignInButton';
+import { ProfileContent } from './components/ProfileContent';
 
 interface Forecast {
     date: string;
@@ -54,6 +58,14 @@ function App() {
 
     return (
         <div>
+            <AuthenticatedTemplate>
+                <SignOutButton />
+                <ProfileContent />
+            </AuthenticatedTemplate>
+            <UnauthenticatedTemplate>
+                <SignInButton />
+            </UnauthenticatedTemplate>
+
             <div className={styles.root}>
                 <Label htmlFor="xyz">Project</Label>
                 <Input id="xyz"/>

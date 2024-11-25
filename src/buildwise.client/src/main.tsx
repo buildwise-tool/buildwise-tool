@@ -7,6 +7,11 @@ import { FluentProvider, webLightTheme } from '@fluentui/react-components';
 import './index.css'
 import App from './App.tsx'
 
+if (import.meta.env.MODE !== 'development')
+{
+  msalConfig.auth.redirectUri = "https://buildwise-test.azurewebsites.net/";
+}
+
 const msalInstance = new PublicClientApplication(msalConfig);
 
 createRoot(document.getElementById('root')!).render(

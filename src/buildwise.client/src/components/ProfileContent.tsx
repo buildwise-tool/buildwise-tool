@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import { useMsal } from "@azure/msal-react";
 import { loginRequest, graphConfig } from '../authConfig';
-import {
-    Button,
-} from "@fluentui/react-components";
+import { Button } from "@fluentui/react-components";
 
 export const ProfileContent = () => {
     const { instance, accounts } = useMsal();

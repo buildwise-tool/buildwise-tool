@@ -12,15 +12,15 @@ const baseFolder =
         ? `${env.APPDATA}/ASP.NET/https`
         : `${env.HOME}/.aspnet/https`;
 
-const certificateName = "buildwise.client";
-const certFilePath = path.join(baseFolder, `${certificateName}.pem`);
-const keyFilePath = path.join(baseFolder, `${certificateName}.key`);
-
 if( env.CI != undefined)
 {
-    console.log('CI is set to' + env.CI);
+    console.log('CI is set to: ' + env.CI);
 }
 if( env.CI == undefined || env.CI != 'true' ) {
+    const certificateName = "buildwise.client";
+    const certFilePath = path.join(baseFolder, `${certificateName}.pem`);
+    const keyFilePath = path.join(baseFolder, `${certificateName}.key`);
+
     if (!fs.existsSync(certFilePath) || !fs.existsSync(keyFilePath)) {
         if (0 !== child_process.spawnSync('dotnet', [
             'dev-certs',
